@@ -16,9 +16,13 @@
 
       return `${formatDatePart(date.getDate())}/${formatDatePart(date.getMonth() + 1)}/${date.getFullYear()} | ${formatDatePart(date.getHours())}:${formatDatePart(date.getMinutes())}`;
     };
+    fetch('http://api.rentme.group/api/ping').then(result => {
+      result.json().then(json => {
+        var d = formatServerDate(json.data);
+        document.getElementById('h1').innerHTML = d;
+      })
+    });
 
-    var d = formatServerDate(1692872868687);
-    document.getElementById('h1').innerHTML = d;
   </script>
 </body>
 
